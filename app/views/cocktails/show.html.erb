@@ -1,0 +1,29 @@
+<div class="text-center">
+
+  <h1><%= @cocktail.name %></h1>
+
+  <h2>List of ingredients:</h2>
+
+  <% if @cocktail.doses.empty? %>
+    <p>Looks like we don't have any ingridients! Please
+    <%= link_to 'add ingredients to this cocktail', new_cocktail_dose_path(@cocktail) %>!</p>
+  <% else %>
+    <ul class="list-unstyled list-group list-group-flush">
+      <% @cocktail.doses.each do |dose| %>
+        <li class="list-group-item list-group-item-info">
+          <%= dose.description %> of <%= dose.ingredient.name %>
+          <small>
+            <%= link_to dose_path(dose), class: 'text-danger', data: { delete: "delete-#{dose.id}" } do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
+
+            <%= link_to '', dose_path(dose), rel: 'nofollow', method: :delete, class: 'hidden', id: "delete-#{dose.id}" %>
+          </small>
+        </li>
+      <% end %>
+    </ul>
+    <%= link_to 'Add ingredient', new_cocktail_dose_path(@cocktail), class: 'btn btn-secondary btn-sm' %>
+  <% end %>
+  <%= link_to 'Back', cocktails_path, class: 'btn btn-secondary btn-sm' %>
+
+</div>

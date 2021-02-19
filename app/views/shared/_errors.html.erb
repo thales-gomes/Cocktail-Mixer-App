@@ -1,0 +1,10 @@
+  <% if record.errors.any? %>
+  <div class="alert alert-danger">
+    <h4>You have errors that you need to correct!</h4>
+    <ul>
+      <% record.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
