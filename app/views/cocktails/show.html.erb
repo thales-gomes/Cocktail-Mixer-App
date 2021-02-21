@@ -13,7 +13,7 @@
         <li class="list-group-item list-group-item-info">
           <%= dose.description %> of <%= dose.ingredient.name %>
           <small>
-            <%= link_to dose_path(dose), class: 'text-danger', data: { delete: "delete-#{dose.id}" } do %>
+            <%= link_to dose_path(dose), class: 'text-danger', method: :delete, data: { delete: "delete-#{dose.id}" } do %>
               <i class="fa fa-trash"></i>
             <% end %>
 
